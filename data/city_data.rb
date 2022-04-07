@@ -1,11 +1,15 @@
 class CityData
 
-  def initialize; end
+  attr_reader :city_short_form
 
-  def fullname(name)
+  def initialize(city_short_form = '')
+    @city_short_form = city_short_form.to_s
+  end
+
+  def full_name
     result = city_names_and_short_form
 
-    result[name.to_sym] || name
+    result[@city_short_form.to_sym] || @city_short_form
   end
 
   private
