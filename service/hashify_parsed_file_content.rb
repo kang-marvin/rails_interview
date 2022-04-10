@@ -1,8 +1,6 @@
 require 'date'
 
 class HashifyParsedFileContent
-  attr_reader :file_content, :separator
-
   DEFAULT_FILE_CONTENT = ""
   DEFAULT_SEPARATOR = "$"
 
@@ -23,6 +21,10 @@ class HashifyParsedFileContent
     )
   end
 
+  private
+
+  attr_reader :file_content, :separator
+
   def headers(content)
     cleanup(content.split(@separator))
   end
@@ -40,8 +42,6 @@ class HashifyParsedFileContent
 
     result
   end
-
-  private
 
   def cleanup(content)
     content.map(&:strip!) rescue []

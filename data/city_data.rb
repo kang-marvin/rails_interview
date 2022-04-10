@@ -1,7 +1,5 @@
 class CityData
 
-  attr_reader :city_short_form
-
   def initialize(city_short_form = '')
     @city_short_form = city_short_form.to_s
   end
@@ -13,6 +11,8 @@ class CityData
   end
 
   private
+
+  attr_reader :city_short_form
 
   def city_names_and_short_form
     {

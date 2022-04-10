@@ -2,8 +2,6 @@ require 'date'
 
 class BirthDateFormat
 
-  attr_reader :birth_date
-
   # The minus (-) is used to remove appending zero
   FORMAT_TO_USE = "%-m/%-d/%Y"
 
@@ -17,6 +15,8 @@ class BirthDateFormat
   end
 
   private
+
+  attr_reader :birth_date
 
   def format_birth_date
     Date.parse(@birth_date).strftime(FORMAT_TO_USE)
