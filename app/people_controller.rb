@@ -1,18 +1,19 @@
 class PeopleController
   def initialize(params)
     @params = params
+    @wanted_values = [ 'first_name', 'city', 'birthdate' ]
   end
 
   def normalize
-    wanted_values = [ 'first_name', 'city', 'birthdate' ]
-    merged_hash_content = [
+    arrayed_hash_content = [
       data({ file_content: @params[:dollar_format] }),
       data({ file_content: @params[:percent_format], separator: "%" }),
     ]
 
-    merged_hash_content.flatten.sort_by!{ |obj| obj[@params[:order].to_s] }.map do |obj|
-      obj.values_at(*wanted_values).join(", ")
-    end
+    ::StringifyArrayedHashContent.new({
+      order_by: @params[:order],
+      wanted_values: @wanted_values
+    }).call(arrayed_hash_content)
   end
 
   private

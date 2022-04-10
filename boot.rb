@@ -9,3 +9,4 @@ require './data/city_data.rb'
 
 # Helper Files
 require './helper/birth_date_format.rb'
+require './helper/stringify_arrayed_hash_content.rb'
